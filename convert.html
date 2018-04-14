@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -9,7 +9,7 @@
         <meta charset="utf-8">
         <title>Soul Tempo</title>
         <meta name="description" content="">
-	<!--Favicon
+		<!--Favicon
 	==================================================-->
 	<link rel="apple-touch-icon" sizes="57x57" href="images/favicon//apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/favicon//apple-icon-60x60.png">
@@ -64,41 +64,93 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
- <!-- Slider start -->
-    <section id="home" class="hero landing hero-section">
-        <div class="video-background-container">
-            <video id="fuck" preload="auto" autoplay loop muted class="video-background">
-                <source  type="video/mp4"src ="videos/1.mp4">
-			</video>
-        </div> 
+    <header id="header" class="navbar-fixed-top navbar-inverse video-menu" role="banner">
+    	<div class="container">
+    		<!-- <div class="row"> -->
+                 <div class="navbar-header ">
+                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                                <img src="images/logo.png" alt="" class="img-responsive  animated fadeInDown">
+                        </a>
+                 </div><!--Navbar header End-->
+                 	<nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
+                        <ul class="nav navbar-nav navbar-right ">
+                           	<li class="active"> <a href="index.html" class="page-scroll">Inicio</a></li>
+                        </ul>
+                     </nav>
+                </div><!-- /.container-fluid -->
+</header>
+ 
+<div class="clearfix"></div>
 
-        <div class="parallax-overlay"></div>
+<!-- About details start -->
+<section id="about-details2">
+    <div class="container">
+            <div class="row">
+                    <div class="col-md-12">
+                        <div class="feature_header text-center">
+                            <h3 class="feature_title"><b>Conversión de Imágenes.</b></h3>
+							<h4>
+							<ul>
+								<li>Solo puedes usar imágenes  en formato ".jpg"</li>
+								<li>Las imágenes NO deben tener una dimensión mayor 300px*300px</li>
+								<li>El proceso de la imagen pueda tardar dependiendo de la capacidad del servidor.</li>
+							</ul>
+							</h4>
+                            <div class="divider"></div>
+							<center>
+								<b>Correo: </b><input type="email" id="email">
+								<br>
+								<input type="file" id="inp"/>
+								<p id="b64"></p>
+								<img id="img" height="150">
+								<br>
+								<button type="submit" id="send" onclick="sendForm()" class="btn btn-primary">Convertir</button>
+							</center>
+								
+                        </div>
+                    </div>  <!-- Col-md-12 End -->
+                </div>
+        </div>
+</section>
+<script>
+	
+</script>
 
+
+<!-- About details end -->
+
+
+
+<!-- Footer Area Start -->
+<section id="footer">
+    <div class="footer_b">
         <div class="container">
-            <div class="hero-content text-center">
-                <div class="hero-text wow fadeIn" data-wow-delay=".8s">
-                    <h3 class="hero-title"><center><img src="images/logo.png" alt="" class="img-responsive"></center></h3>
-                    <p class="hero-buttons">
-                        <a href="convert.html" class="btn btn-main featured">
-                            <strong>Convertir</strong> </i>
-                        </a>
-                         <a href="faq.html" class="btn btn-main featured">
-                            <strong>Información</strong> </i>
-                        </a>
-                    </p>
-					<br>
-					<ul class="social-contact list-inline">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer_bottom">
+                        <p class="text-block"> &copy;<span>Soul Tempo</span></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="footer_mid pull-right">
+                        <ul class="social-contact list-inline">
                             <li> <a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li> <a href="#"><i class="fa fa-github"></i></a></li>
-                    </ul>
-                </div><!--/ Hero text end -->
-            </div><!--/ Hero content end -->
-        </div><!--/ Container end -->
-    </section><!--/ Home end -->
+                        </ul>
+                    </div>
+                </div>
 
-
-
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer Area End -->
 
 
 
@@ -147,10 +199,44 @@
         <script type="text/javascript" src="js/gmaps.js"></script>
 			<!-- Custom js -->
         <script src="js/custom.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
-			var fuck= new Array("videos/1.mp4","videos/2.mp4","videos/3.mp4","videos/4.mp4","videos/5.mp4");
-			document.getElementById("fuck").src = fuck[Math.floor(Math.random() * 5)];
-		</script>
+function readFile() {
+
+if (this.files && this.files[0]) {
+
+var FR= new FileReader();
+
+FR.addEventListener("load", function(e) {
+document.getElementById("img").src = e.target.result;
+document.getElementById("b64").innerHTML = e.target.result;
+var n = e.target.result.slice(27);
+alert(n);
+$.ajax({
+                url: 'test.php', // url where to submit the request
+                type : "POST", // type of action POST || GET
+                dataType : 'json', // data type
+                data : n, // post data || get data
+                success : function(result) {
+                    // you can see the result from the console
+                    // tab of the developer tools
+                    console.log(result);
+                },
+                error: function(xhr, resp, text) {
+                    console.log(xhr, resp, text);
+                }
+            })
+});
+
+FR.readAsDataURL( this.files[0] );
+}
+
+}
+
+document.getElementById("inp").addEventListener("change", readFile);
+
+</script>
+
  
     </body>
 </html>

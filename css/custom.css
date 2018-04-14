@@ -167,7 +167,7 @@ a{
     color: #fff;
 }
 .feature-tab,.team-items,.pricing,.single_blog ,#testimonial .owl-carousel .owl-wrapper,.contact_full{
-    margin-top: 40px;
+    margin-top: 10px;
 }
 #portfolio{
     padding-bottom: 0px;
@@ -188,8 +188,8 @@ a{
     }
 
 #service,#pricing_table,#about,#team,#blog,#contact,#testimonial,#portfolio,#video-fact,#about-details {
-     padding-bottom: 130px;
-     padding-top:90px;
+     padding-bottom: 40px;
+     padding-top:50px;
 }
 section{
     /*padding:50px 0px;*/
@@ -2560,6 +2560,11 @@ iframe{
 }
 #about-details {
     background: url('../images/banner/banner.jpg')fixed 50% 50%;
+}
+#about-details2 {
+   background-color:#0fd0fd;
+   padding-top:120px!important;
+   padding-bottom:150px!important;
 }
 
 .single-progress .progress{
