@@ -6,14 +6,22 @@
 """
 
 #Import libraries
+import io
 import numpy as np
 import cv2
 import matplotlib
 import random
 import math
 from knnLuis import ColorDetector
+import emotions
+import base64
+from PIL import Image
+import json
+
 #Define class Segment
 class Segment:
+
+
     #Initialize class
     def __init__(self, image, rConcentration, gConcentration, bConcentration):
         #Read the image
@@ -99,6 +107,42 @@ class Segment:
 #Define Class SoulTempo
 class SoulTempo:
 
+    def stringToBase64(self, s):
+        return base64.b64encode(s.encode('utf-8'))
+
+    def base64ToString(self,b):
+        return base64.b64decode(b).decode('utf-8')
+
+
+    #Method to convert to base64
+    def tobase64(self):
+        self.retval, self.buffer = cv2.imencode('.jpg', self.image)
+        self.encoded = base64.b64encode(self.buffer)
+    #End to base64
+
+    #Method to convert to JSON
+    def toJSON(self, base64img):
+        data = {}
+        data['base64img'] = base64img
+        data['base64audio'] = base64audio
+        data['mail'] = self.mail
+        data['imagepath'] = self.imagename
+        json_data = json.dumps(data)
+        print(json_data)
+    #End method
+
+    #Method to convert from base64
+    def frombase64(self):
+        sbuf = io.BytesIO()
+        decodedString = base64.b64decode( self.imagename )
+        print( type( decodedString ))
+        #imageBytes = bytearray( source=decodedString, encoding="utf-8" )
+        sbuf.write( decodedString )
+        pimg = Image.open(sbuf)
+        self.image = cv2.cvtColor(np.array(pimg), cv2.COLOR_BGR2RGB)
+        #cv2.imwrite(self.imagename, self.image)
+    #End from base64
+
     #Method to segmentate the image into random pieces.
     def segmentate(self):
         self.segments = []
@@ -128,11 +172,46 @@ class SoulTempo:
             #self.segments[i].saveimg("seg"+str(i)+".jpg") #Save the images
 
         colorData = []
+        self.emotions = []
 
         for i in range(0, len(self.segments)):
             colorData.append(self.segments[i].countcolors())
             #print(colorData[i])
             print("Processed section", i)
+
+        selectedSection = random.randint(0, len(self.segments) - 1)
+
+        sect = colorData[selectedSection]
+        print(sect)
+        indexMax = np.where(sect == max(sect))
+
+        if indexMax == 0:
+            self.emotions.append(random.choice(blue))
+            self.emotions.append(random.choice(blue))
+        if indexMax == 1:
+            self.emotions.append(random.choice(green))
+            self.emotions.append(random.choice(green))
+        if indexMax == 2:
+            self.emotions.append(random.choice(violet))
+            self.emotions.append(random.choice(violet))
+        if indexMax == 3:
+            self.emotions.append(random.choice(red))
+            self.emotions.append(random.choice(red))
+        if indexMax == 4:
+            self.emotions.append(random.choice(pink))
+            self.emotions.append(random.choice(pink))
+        if indexMax == 5:
+            self.emotions.append(random.choice(white))
+            self.emotions.append(random.choice(white))
+        if indexMax == 6:
+            self.emotions.append(random.choice(black))
+            self.emotions.append(random.choice(black))
+        if indexMax == 7:
+            self.emotions.append(random.choice(gray))
+            self.emotions.append(random.choice(gray))
+        if indexMax == 8:
+            self.emotions.append(random.choice(yellow))
+            self.emotions.append(random.choice(yellow))
 
         return colorData
     #End method segmentate()
@@ -140,9 +219,11 @@ class SoulTempo:
 
 
     #Initialize class
-    def __init__(self, impath):
+    def __init__(self, impath, mail):
         #Read the image
-        self.image = cv2.imread(impath) #Replace for impath
+        #self.image = cv2.imread(impath) #Replace for impath
+        self.imagename = impath
+        self.mail = mail
     #End constructor
 
 
