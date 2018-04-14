@@ -1,6 +1,14 @@
+"""
+
+  SoulTempo
+  Authors: Luis Alfredo León, Armando Canto, Luis Shafik, Ricardo Legaspi
+
+"""
+
+
 from processImage import SoulTempo
 
-st = SoulTempo("vieja.jpg")
+st = SoulTempo("tiger.jpg")
 
 segmentData = st.segmentate()
 

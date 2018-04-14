@@ -106,32 +106,34 @@ class SoulTempo:
         print(numsegments)
         #math.sqrt(len(image).astype(int))
 
-        increment = int(len(self.image) / numsegments)
+        increments = []
+        for i in range(0, numsegments):
+            increment = random.randint(1,int(len(self.image) / numsegments))
+            increments.append(increment)
 
         act = 0
 
-        imageSeg = np.zeros((increment,len(self.image[0]),3), np.uint8)
-
         for i in range(0,numsegments):
+            imageSeg = np.zeros((increments[i],len(self.image[0]),3), np.uint8)
             self.segments.append(Segment(imageSeg, 0 , 0, 0)) #Instantiate the segment
 
         #Send corresponding pixels to image
         x = 0 #Original pic indexes
         y = 0 #Original pic indexes
         for i in range(0, len(self.segments)):
-            for a in range(0, increment - 1):
+            for a in range(1, increments[i] - 1):
                 for b in range(0, len(self.image[0]) - 1):
                     self.segments[i].image[a,b] = self.image[x,y]
                     y = y + 1
                 x = x + 1
                 y = 0
-            self.segments[i].saveimg("seg"+str(i)+".jpg") #Save the images
+            #self.segments[i].saveimg("seg"+str(i)+".jpg") #Save the images
 
         colorData = []
 
         for i in range(0, len(self.segments)):
             colorData.append(self.segments[i].countcolors())
-            print(colorData[i])
+            #print(colorData[i])
             print("Processed section", i)
 
         return colorData

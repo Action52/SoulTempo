@@ -1,3 +1,10 @@
+"""
+
+  SoulTempo
+  Authors: Luis Alfredo León, Armando Canto, Luis Shafik, Ricardo Legaspi
+
+"""
+
 # K-Nearest Neighbors (K-NN)
 
 # Importing the libraries
