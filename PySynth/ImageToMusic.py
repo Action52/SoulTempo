@@ -3,11 +3,10 @@ from processImage import SoulTempo
 import json
 import sys
 
-class Main:
+class ImageToMusic:
 
     def processData(self):
-        with open(self.jsonreq) as jsonfile:
-            data = json.load(jsonfile) #sys.argv[1]
+        data = (jsonfile) #sys.argv[1]
 
         st = SoulTempo(data['base64img'], data['mail'])
         st.frombase64() #Generate image as opencv readable
