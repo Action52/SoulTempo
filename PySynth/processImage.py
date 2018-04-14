@@ -125,13 +125,13 @@ class SoulTempo:
                     y = y + 1
                 x = x + 1
                 y = 0
-            self.segments[i].saveimg("seg"+str(i)+".jpg") #Save the images
+            #self.segments[i].saveimg("seg"+str(i)+".jpg") #Save the images
 
         colorData = []
 
         for i in range(0, len(self.segments)):
             colorData.append(self.segments[i].countcolors())
-            print(colorData[i])
+            #print(colorData[i])
             print("Processed section", i)
 
         return colorData
