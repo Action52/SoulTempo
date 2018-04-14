@@ -27,35 +27,32 @@ def createTune(list):
 	mymoda = 0
 	notelength = 0
 
-	if list[0] < 0.3:
+
+	if list[0] > 0.1:
+		myblue = 'g#'
+	else:
 		myblue = 'g'
 
-	if list[0] > 0.3:
-		myblue = 'g#'
-
-	if list[1] < 0.3:
+	if list[1] > 0.1:
+		mygreen = 'f'
+	else:
 		mygreen = 'e'
 
-	if list[1] > 0.3:
-		mygreen = 'f'
-
-	if list[2] < 0.3:
+	if list[2] > 0.1:
+		myviolet = 'a#'
+	else:
 		myviolet = 'b'
 
-	if list[2] > 0.3:
-		myviolet = 'a#'
-
-	if list[3] < 0.3:
+	if list[3] > 0.1:
+		myred = 'c#'
+	else:
 		myred = 'c'
 
-	if list[3] > 0.3:
-		myred = 'c#'
 
-	if list[8]< 0.3:
-		myblue = 'd#'
-
-	if list[8] > 0.3:
+	if list[8] > 0.1:
 		myorange = 'd'
+	else:
+		myorange = 'd#'
 
 	rand = randint(1,3)
 	listcolors=[]
@@ -88,4 +85,4 @@ for x in range(0,len(data)):
 	createTune(data[x])
 
 
-ps.make_wav(cancion, fn = "pohaultimatum.wav")
+ps.make_wav(cancion, fn = "pohaultimatum2.wav")
