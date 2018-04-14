@@ -12,9 +12,9 @@ def createTune(list):
 	mygreen = ''
 	myviolet = ''
 	myred = ''
-	mypink = 'b'
-	mywhite = 'a#'
-	myblack = 'a'
+	mypink = ''
+	mywhite = ''
+	myblack = ''
 	mygray = 'a'
 	myorange = ''
 
@@ -28,33 +28,47 @@ def createTune(list):
 	notelength = 0
 
 
-	if list[0] > 0.1:
-		myblue = 'g#'
+	if list[0] > 0.05:
+		myblue = 'g#4'
 	else:
-		myblue = 'g'
+		myblue = 'g5'
 
-	if list[1] > 0.1:
-		mygreen = 'f'
+	if list[1] > 0.05:
+		mygreen = 'e1'
 	else:
-		mygreen = 'e'
+		mygreen = 'E0'
 
-	if list[2] > 0.1:
-		myviolet = 'a#'
+	if list[2] > 0.05:
+		myviolet = 'a#5'
 	else:
-		myviolet = 'b'
+		myviolet = 'b5'
 
-	if list[3] > 0.1:
-		myred = 'c#'
+	if list[3] > 0.05:
+		myred = 'c#3'
 	else:
-		myred = 'c'
+		myred = 'c3'
 
-
-	if list[8] > 0.1:
-		myorange = 'd'
+	if list[8] > 0.05:
+		myorange = 'd4'
 	else:
-		myorange = 'd#'
+		myorange = 'd#4'
 
-	rand = randint(1,3)
+	if list[5] > 0.05:
+		mywhite = 'B4'
+	else:
+		mywhite = 'B3'
+
+	if list[6] > 0.05:
+		myblack = 'a1'
+	else:
+		myblack = 'a0'
+
+	if list[4] > 0.05:
+		mypink = 'b6'
+	else:
+		mypink = 'b5'
+
+	rand = randint(1,4)
 	listcolors=[]
 	newresult =[]
 
@@ -64,8 +78,10 @@ def createTune(list):
 		listcolors.append(list[x])
 
 	average = sum(listcolors)/len(listcolors)
+	print("avg")
+	print(average)
 
-	if average > 0.5:
+	if average > 0.11100:
 		notelength = -8
 	else:
 		notelength = -4
