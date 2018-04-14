@@ -68,6 +68,18 @@ class Segment:
                     self.yellow = self.yellow + 1
                 if self.color[0] == 'Gray':
                     self.gray = self.gray + 1
+                self.total = self.total + 1
+
+        #Normalize
+        self.red = self.red / self.total
+        self.blue = self.blue / self.total
+        self.green = self.green / self.total
+        self.violet = self.violet / self.total
+        self.white = self.white / self.total
+        self.black = self.black / self.total
+        self.pink = self.pink / self.total
+        self.yellow = self.yellow / self.total
+        self.gray = self.gray / self.total
 
         #Average and std
         self.redStd = np.std(self.image[:,:,0])
@@ -77,8 +89,6 @@ class Segment:
         self.redAvg = np.average(self.image[:,:,0])
         self.greenAvg = np.average(self.image[:,:,1])
         self.blueAvg = np.average(self.image[:,:,2])
-
-        #Normalizar
 
         self.list = [self.blue, self.green, self.violet, self.red, self.pink, self.white, self.black, self.gray, self.yellow, self.redStd, self.greenStd, self.blueStd, self.redAvg, self.greenAvg, self.blueAvg]
         return self.list
