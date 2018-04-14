@@ -20,7 +20,7 @@ class ColorDetector:
         self.y = dataset.iloc[:, 3].values
 
         # Splitting the dataset into the Training set and Test set
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size = 0.25, random_state = 0)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size = 0.25)
 
         # Feature Scaling
         #self.sc = StandardScaler()

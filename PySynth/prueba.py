@@ -1,8 +1,8 @@
 from processImage import SoulTempo
 
-st = SoulTempo("vieja.jpg")
+st = SoulTempo("tiger.jpg")
 
 segmentData = st.segmentate()
 
-for i in range(0, len(segmentData)):
-    print(segmentData[i])
+#for i in range(0, len(segmentData)):
+    #print(segmentData[i])

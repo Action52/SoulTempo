@@ -113,8 +113,7 @@ class SoulTempo:
         imageSeg = np.zeros((increment,len(self.image[0]),3), np.uint8)
 
         for i in range(0,numsegments):
-            seg = Segment(imageSeg, 0 , 0, 0)
-            self.segments.append(seg)
+            self.segments.append(Segment(imageSeg, 0 , 0, 0)) #Instantiate the segment
 
         #Send corresponding pixels to image
         x = 0 #Original pic indexes
@@ -131,9 +130,8 @@ class SoulTempo:
         colorData = []
 
         for i in range(0, len(self.segments)):
-            actData = self.segments[i].countcolors()
-
-            colorData.append(actData)
+            colorData.append(self.segments[i].countcolors())
+            print(colorData[i])
             print("Processed section", i)
 
         return colorData

@@ -2,7 +2,7 @@ import pysynth as ps
 from random import randint
 from processImage import SoulTempo
 
-st = SoulTempo("vieja.jpg")
+st = SoulTempo("tiger.jpg")
 data = st.segmentate()
 
 cancion=[]
@@ -61,7 +61,7 @@ def createTune(list):
 	listcolors=[]
 	newresult =[]
 
-	
+
 
 	for x in range(0,9):
 		listcolors.append(list[x])
@@ -81,16 +81,11 @@ def createTune(list):
 	for x in range(0,rand):
 		cancion.append((result[x][0],notelength))
 
-	
-	
+
+
 
 for x in range(0,len(data)):
 	createTune(data[x])
 
 
 ps.make_wav(cancion, fn = "pohaultimatum.wav")
-
-
-
-
-
